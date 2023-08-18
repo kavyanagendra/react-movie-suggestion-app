@@ -6,6 +6,7 @@ export async function fetchTrendingMoviesAndSeries() {
     method: "GET",
     headers: {
       accept: "application/json",
+      //This is not the ideal method
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0OTA5NGIzZDA2OWEzNjg2ODQzYWE4YzVjYmRhOTAwNiIsInN1YiI6IjY0ZGY1NDdmNWFiODFhMDBlMjViNTI4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wFS5hQdMhj9yVW3yU_388biY14oWV9spE-v4zV7Zkvk",
     },
@@ -25,6 +26,7 @@ export async function fetchGenres() {
     method: "GET",
     headers: {
       accept: "application/json",
+      //This is not the ideal method
       Authorization:
         "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0OTA5NGIzZDA2OWEzNjg2ODQzYWE4YzVjYmRhOTAwNiIsInN1YiI6IjY0ZGY1NDdmNWFiODFhMDBlMjViNTI4NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wFS5hQdMhj9yVW3yU_388biY14oWV9spE-v4zV7Zkvk",
     },
