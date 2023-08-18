@@ -1,9 +1,7 @@
-import { useParams, useLocation } from "react-router-dom";
-import { Box, Text, Image, Flex } from "@chakra-ui/react";
+import { useLocation } from "react-router-dom";
+import { Box, Text, Image, Flex, Badge, VStack } from "@chakra-ui/react";
 
 const MovieDetails = () => {
-  const { movieId } = useParams<{ movieId: string }>();
-
   const location = useLocation();
 
   // Extract query parameters from the search string
@@ -15,28 +13,43 @@ const MovieDetails = () => {
   const popularity = queryParams.get("popularity");
 
   return (
-    <Flex align="top" minHeight="50vh">
-      <Flex
+    <Flex justifyContent="center" alignItems="top" minHeight="50vh" py={8}>
+      <Box
+        width="100%"
+        maxW="800px"
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
-        p={4}
-        flexDirection={{ base: "column", md: "row" }}
+        boxShadow="lg"
       >
-        <Image
-          src={`https://image.tmdb.org/t/p/w220_and_h330_bestv2/${poster_path}`}
-          alt={`Movie Poster`}
-          width={{ base: "100%", md: "auto" }}
-        />
-        <Box ml={{ base: 0, md: 4 }}>
-          <Text fontSize="xl" fontWeight="bold" mb={2}>
-            {title}
-          </Text>
-          <Text>{overview}</Text>
-          <Text>Vote Count: {vote_count}</Text>
-          <Text>Vote Count: {popularity}</Text>
-        </Box>
-      </Flex>
+        <Flex direction={{ base: "column", md: "row" }}>
+          <Image
+            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+            alt={`Movie Poster`}
+            width={{ base: "100%", md: "40%" }}
+          />
+          <VStack
+            p={6}
+            align="start"
+            justify="center"
+            width={{ base: "100%", md: "60%" }}
+            spacing={4}
+          >
+            <Text fontSize="2xl" fontWeight="bold">
+              {title}
+            </Text>
+            <Text>{overview}</Text>
+            <Flex justify="space-between" w="100%">
+              <Badge colorScheme="purple" fontSize="sm">
+                Vote Count: {vote_count}
+              </Badge>
+              <Badge colorScheme="blue" fontSize="sm">
+                Popularity: {popularity}
+              </Badge>
+            </Flex>
+          </VStack>
+        </Flex>
+      </Box>
     </Flex>
   );
 };
