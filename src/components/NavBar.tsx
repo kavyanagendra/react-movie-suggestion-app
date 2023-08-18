@@ -1,5 +1,5 @@
 import { HStack, Image } from "@chakra-ui/react";
-import logo from '../assets/logo.png';
+import logo from "../assets/logo.png";
 
 export const NavBar = () => {
   return (
@@ -7,4 +7,4 @@ export const NavBar = () => {
       <Image src={logo} boxSize="60px" padding="5px" />
     </HStack>
   );
-}
+};

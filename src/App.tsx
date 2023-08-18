@@ -4,10 +4,10 @@ import { NavBar } from "./components/NavBar";
 import { MovieGrid } from "./components/MovieGrid";
 import { GenreList } from "./components/GenreList";
 import { Genre } from "./types";
-import './App.css'
+import "./App.css";
 
 function App() {
-  const[selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
   return (
     <Grid
@@ -25,7 +25,10 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </GridItem>
       </Show>
       <GridItem area="main" padding={5}>
@@ -35,4 +38,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

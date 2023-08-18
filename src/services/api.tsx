@@ -40,4 +40,3 @@ export async function fetchGenres() {
   console.log(data.genres);
   return data.genres;
 }
-

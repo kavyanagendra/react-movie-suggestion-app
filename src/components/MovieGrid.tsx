@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { SimpleGrid, Text, Box } from "@chakra-ui/react";
 import { MovieCard } from "./MovieCard";
 import { fetchTrendingMoviesAndSeries } from "../services/api";
-import { Movie, Genre } from '../types';
+import { Movie, Genre } from "../types";
 import { MovieCardSkeleton } from "./MovieCardSkeleton";
 
-interface Props{
+interface Props {
   selectedGenre: Genre | null;
 }
 export const MovieGrid = ({ selectedGenre }: Props) => {
