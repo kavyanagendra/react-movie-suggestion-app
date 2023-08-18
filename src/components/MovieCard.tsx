@@ -10,7 +10,12 @@ interface Props {
 export const MovieCard = ({ movie }: Props) => {
   return (
     <Card width="100%" borderRadius={10} overflow={"hidden"}>
-      <Link to={`/movie/${movie.id}`}>
+      <Link
+        to={{
+          pathname: `/movie/${movie.id}`,
+          search: `?poster_path=${movie.poster_path}&vote_count=${movie.vote_count}&title=${movie.title}&overview=${movie.overview}&popularity=${movie.popularity}`,
+        }}
+      >
         <Image
           src={
             movie.poster_path

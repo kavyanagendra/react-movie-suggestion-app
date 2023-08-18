@@ -18,6 +18,7 @@ export async function fetchTrendingMoviesAndSeries() {
   );
 
   const data = await result.json();
+  console.log(data.results);
   return data.results;
 }
 
