@@ -13,7 +13,11 @@ export const MovieCard = ({ movie }: Props) => {
       <Link
         to={{
           pathname: `/movie/${movie.id}`,
-          search: `?poster_path=${movie.poster_path}&vote_count=${movie.vote_count}&title=${movie.title}&overview=${movie.overview}&popularity=${movie.popularity}`,
+          search: `?poster_path=${movie.poster_path}&vote_count=${
+            movie.vote_count
+          }&title=${movie.title ? movie.title : movie.name}&overview=${
+            movie.overview
+          }&popularity=${movie.popularity}`,
         }}
       >
         <Image
@@ -24,7 +28,9 @@ export const MovieCard = ({ movie }: Props) => {
           }
         />
         <CardBody>
-          <Heading fontSize={"xl"}>{movie.title}</Heading>
+          <Heading fontSize={"xl"}>
+            {movie.title ? movie.title : movie.name}
+          </Heading>
         </CardBody>
       </Link>
     </Card>

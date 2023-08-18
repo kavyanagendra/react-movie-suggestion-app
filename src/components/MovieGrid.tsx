@@ -32,9 +32,14 @@ export const MovieGrid = ({ selectedGenre, searchText }: Props) => {
   const filteredMovies = movies.filter((movie) => {
     const hasSelectedGenre =
       !selectedGenre || movie.genre_ids.includes(selectedGenre.id);
+
+    const titleLowerCase =
+      (movie.title ? movie.title.toLowerCase() : "") ||
+      (movie.name ? movie.name.toLowerCase() : "");
+
+    const searchTextLowerCase = searchText.toLowerCase();
     const hasSearchText =
-      !searchText ||
-      movie.title.toLowerCase().includes(searchText.toLowerCase());
+      !searchText || titleLowerCase.includes(searchTextLowerCase);
 
     return hasSelectedGenre && hasSearchText;
   });
