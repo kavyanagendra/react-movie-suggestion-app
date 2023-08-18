@@ -11,12 +11,10 @@ export async function fetchTrendingMoviesAndSeries() {
     },
   };
 
-  const res1 = await fetch(
-    "https://api.themoviedb.org/3/account/20317965/favorite/movies?language=en-US&page=1&sort_by=created_at.asc",
-    options
-  );
+  const res1 = await fetch(BASE_URL, options);
 
   const data = await res1.json();
+  console.log(data.results);
   return data.results;
 }
 
