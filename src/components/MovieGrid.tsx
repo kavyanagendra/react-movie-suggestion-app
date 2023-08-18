@@ -7,8 +7,9 @@ import { MovieCardSkeleton } from "./MovieCardSkeleton";
 
 interface Props {
   selectedGenre: Genre | null;
+  searchText: string | "";
 }
-export const MovieGrid = ({ selectedGenre }: Props) => {
+export const MovieGrid = ({ selectedGenre, searchText }: Props) => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,10 +28,16 @@ export const MovieGrid = ({ selectedGenre }: Props) => {
       });
   }, []);
 
-  // Filter movies based on selected genre
-  const filteredMovies = selectedGenre
-    ? movies.filter((movie) => movie.genre_ids.includes(selectedGenre.id))
-    : movies;
+  // Filter movies based on selected genre and search text
+  const filteredMovies = movies.filter((movie) => {
+    const hasSelectedGenre =
+      !selectedGenre || movie.genre_ids.includes(selectedGenre.id);
+    const hasSearchText =
+      !searchText ||
+      movie.title.toLowerCase().includes(searchText.toLowerCase());
+
+    return hasSelectedGenre && hasSearchText;
+  });
 
   return (
     <>

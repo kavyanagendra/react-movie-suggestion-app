@@ -1,15 +1,23 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { useState } from "react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useRef } from "react";
 
-export const SearchInput = () => {
+interface Props{
+    onSearch: (searchText: string)=> void;
+}
+
+export const SearchInput = ({onSearch}: Props) => {
   const ref = useRef<HTMLInputElement>(null);
-  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
     if (ref.current) {
-      setSearchQuery(ref.current.value);
+      onSearch(ref.current.value);
+    }
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
     }
   };
 
@@ -20,7 +28,7 @@ export const SearchInput = () => {
       </InputLeftElement>
       <Input
         ref={ref}
-        onClick={handleSearch}
+        onKeyDown={handleKeyPress}
         borderRadius={20}
         placeholder="Search Movies...."
         variant="filled"

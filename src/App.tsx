@@ -8,6 +8,7 @@ import "./App.css";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [searchText, setSelectedSearch] = useState('');
 
   return (
     <Grid
@@ -21,7 +22,9 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar></NavBar>
+        <NavBar
+          onSearch={(searchText) => setSelectedSearch(searchText)}
+        ></NavBar>
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
@@ -32,7 +35,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main" padding={5}>
-        <MovieGrid selectedGenre={selectedGenre} />
+        <MovieGrid selectedGenre={selectedGenre} searchText={searchText} />
       </GridItem>
     </Grid>
   );
