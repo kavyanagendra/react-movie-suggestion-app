@@ -17,7 +17,7 @@ export const MovieCard = ({ movie }: Props) => {
         }
       />
       <CardBody>
-        <Heading fontSize={"2xl"}>{movie.title}</Heading>
+        <Heading fontSize={"xl"}>{movie.title}</Heading>
       </CardBody>
     </Card>
   );
