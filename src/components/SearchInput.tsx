@@ -2,11 +2,11 @@ import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useRef } from "react";
 
-interface Props{
-    onSearch: (searchText: string)=> void;
+interface Props {
+  onSearch: (searchText: string) => void;
 }
 
-export const SearchInput = ({onSearch}: Props) => {
+export const SearchInput = ({ onSearch }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
 
   const handleSearch = () => {
