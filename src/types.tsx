@@ -4,12 +4,10 @@ export interface Movie {
   vote_count: number;
   poster_path: string;
   release_date: string;
+  genre_ids: number[];
 }
 
 export interface Genre {
   id: number;
-  title: string;
-  vote_count: number;
-  poster_path: string;
-  release_date: string;
+  name: string;
 }
