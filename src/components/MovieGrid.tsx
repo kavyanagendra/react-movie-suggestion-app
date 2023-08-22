@@ -8,8 +8,10 @@ import { MovieCardSkeleton } from "./MovieCardSkeleton";
 interface Props {
   selectedGenre: Genre | null;
   searchText: string | "";
+  handleClick: (selectedMovie: Movie) => void;
 }
-export const MovieGrid = ({ selectedGenre, searchText }: Props) => {
+
+export const MovieGrid = ({ selectedGenre, searchText, handleClick }: Props) => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -57,7 +59,11 @@ export const MovieGrid = ({ selectedGenre, searchText }: Props) => {
         {!loading &&
           (filteredMovies.length > 0 ? (
             filteredMovies.map((movieItem) => (
-              <MovieCard key={movieItem.id} movie={movieItem} />
+              <MovieCard
+                key={movieItem.id}
+                movie={movieItem}
+                handleClick={handleClick}
+              />
             ))
           ) : (
             <Box textAlign="center" gridColumn="span 4">

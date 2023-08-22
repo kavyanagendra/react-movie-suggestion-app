@@ -5,19 +5,25 @@ import noImage from "../assets/no-image-placeholder.png";
 
 interface Props {
   movie: Movie;
+  handleClick: (selectedMovie: Movie) => void;
 }
 
-export const MovieCard = ({ movie }: Props) => {
+export const MovieCard = ({ movie, handleClick }: Props) => {
+
+  const cardClicked =() =>{
+    handleClick(movie);
+  }
+
   return (
-    <Card width="100%" borderRadius={10} overflow={"hidden"}>
+    <Card
+      width="100%"
+      borderRadius={10}
+      overflow={"hidden"}
+      onClick={cardClicked}
+    >
       <Link
         to={{
-          pathname: `/movie/${movie.id}`,
-          search: `?poster_path=${movie.poster_path}&vote_count=${
-            movie.vote_count
-          }&title=${movie.title ? movie.title : movie.name}&overview=${
-            movie.overview
-          }&popularity=${movie.popularity}`,
+          pathname: `/movie/${movie.id}`
         }}
       >
         <Image

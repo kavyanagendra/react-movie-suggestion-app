@@ -6,11 +6,12 @@ import { NavBar } from "./components/NavBar";
 import { MovieGrid } from "./components/MovieGrid";
 import { GenreList } from "./components/GenreList";
 import MovieDetails from "./components/MovieDetails";
-import { Genre } from "./types";
+import { Genre, Movie } from "./types";
 import "./App.css";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [searchText, setSelectedSearch] = useState("");
 
   return (
@@ -46,10 +47,14 @@ function App() {
                   <MovieGrid
                     selectedGenre={selectedGenre}
                     searchText={searchText}
+                    handleClick={(movie) => setSelectedMovie(movie)}
                   />
                 }
               />
-              <Route path="/movie/:movieId" element={<MovieDetails />} />
+              <Route
+                path="/movie/:movieId"
+                element={<MovieDetails movie={selectedMovie} />}
+              />
             </Routes>
           </GridItem>
         </Grid>
